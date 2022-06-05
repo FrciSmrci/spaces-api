@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('login');
+});
+
+Route::get('home', function () {
     return view('welcome');
+});
+
+Route::prefix('google')->name('google.')->group(function () {
+    Route::get('login', [GoogleController::class, 'redirectToProvider'])->name('login');
+    Route::any('callback', [GoogleController::class, 'handleProviderCallback'])->name('callback');
 });
