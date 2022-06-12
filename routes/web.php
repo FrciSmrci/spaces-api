@@ -23,6 +23,6 @@ Route::get('home', function () {
 });
 
 Route::prefix('google')->name('google.')->group(function () {
-    Route::get('login', [GoogleController::class, 'redirectToProvider'])->name('login');
-    Route::any('callback', [GoogleController::class, 'handleProviderCallback'])->name('callback');
+    Route::get('login', [GoogleController::class, 'create'])->name('login');
+    Route::post('callback', [GoogleController::class, 'store'])->name('callback');
 });

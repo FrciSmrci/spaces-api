@@ -15,7 +15,7 @@ class GoogleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function create()
     {
         return Socialite::driver('google')->redirect();
     }
@@ -25,7 +25,7 @@ class GoogleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function store()
     {
         try {
             $user = Socialite::driver('google')->user();
